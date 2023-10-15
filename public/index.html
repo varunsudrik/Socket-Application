@@ -65,7 +65,12 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
       const socket = io();
-      socket.on("message", (message) => console.log(message));
+      let allMessage = document.getElementById("messages");
+      socket.on("message", (message) => {
+        const p = document.createElement("p");
+        p.innerText = message;
+        allMessage.appendChild(p);
+      });
 
       const form = document.getElementById("form");
       const input = document.getElementById("input");
